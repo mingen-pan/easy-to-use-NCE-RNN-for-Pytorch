@@ -7,6 +7,24 @@ This RNN model is implemented with the Noise Contrastive Estimation (NCE) to sub
 
 This is a beginner-friendly model. The NCE loss-function module is located in the nce.py, which can be directly implemented into your own network. However, I include no GPU boosting code here, so users may need to boost them by themselves.
 
+
+Initialize the criterion module,
+
+`train_criterion = NCELoss(Q, noise_ratio, Z_offset)`
+
+
+Run the RNN model and get the output:
+
+`output, hidden = model(data, hidden)`
+
+Then, convert the output into 2D tensor and run the NCE loss
+
+`loss = train_criterion(output.view(-1, ntokens), targets)`
+
+Finally, back-propopagate through the Network:
+
+`loss.backward()`
+
 The NCEloss in the nce.py would receive a output tensor from the network and the corresponding target. The output tensor should be 2D tensor (B' x N) and the target tensor should have the size of B' in 1D or B' x 1 in 2D. Generally the RNN would output a 3D tensor like (B x L x N), please convert into (BL x N). Similarly convert the target (B x L) into (BL in 1D). Luckily, in my code, even you don't do the conversion, the code still works.
 
 The B, L, N are the batch size, sequence length, and total vocabulary size.
