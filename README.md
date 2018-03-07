@@ -46,4 +46,5 @@ In addition, a SGD with momentum = 0.9 is used to descent the parameter.
 
 ------------------------------------------------------------------------------------------------------------------------------
 The RNN model is from: https://github.com/pytorch/examples/tree/master/word_language_model
+
 I have done some modification on it: use SCD with momentum optimizer, add the learning rate decay through batches and epoches, and the automatically update Z_offset from Softmax every 100 batches.
