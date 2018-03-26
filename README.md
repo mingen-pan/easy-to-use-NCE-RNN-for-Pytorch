@@ -1,4 +1,4 @@
-# easy_to_use-NCE-RNN-for-Pytorch
+# easy-to-use-NCE-RNN-for-Pytorch
 A basic framework of the Noise Contrastive Estimation (NCE) on RNN model. Can be run directly on PC and MAC
 
 
