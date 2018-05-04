@@ -75,6 +75,32 @@ Ordinary Softmax:
 
 They are more or less similar. Of course, the ordinary softmax should behave a bit better.
 
+<br/>
+<br/>
+
+Here is the result of running for 2 epochs:
+
+(parameters are the default values)
+
+```
+| epoch   1 |   200/  829 batches | lr 6.62 | ms/batch 310.14 | loss  4.01 | perplexity    55.41
+| epoch   1 |   400/  829 batches | lr 5.49 | ms/batch 313.78 | loss  3.46 | perplexity    31.90
+| epoch   1 |   600/  829 batches | lr 4.54 | ms/batch 310.64 | loss  3.28 | perplexity    26.46
+| epoch   1 |   800/  829 batches | lr 3.76 | ms/batch 302.40 | loss  3.20 | perplexity    24.59
+-----------------------------------------------------------------------------------------
+| end of epoch   1 | time: 270.69s | valid loss  5.18 | valid perplexity   177.23
+-----------------------------------------------------------------------------------------
+| epoch   2 |   200/  829 batches | lr 2.65 | ms/batch 320.44 | loss  3.09 | perplexity    22.04
+| epoch   2 |   400/  829 batches | lr 2.19 | ms/batch 312.87 | loss  3.00 | perplexity    20.15
+| epoch   2 |   600/  829 batches | lr 1.82 | ms/batch 319.28 | loss  2.92 | perplexity    18.45
+| epoch   2 |   800/  829 batches | lr 1.50 | ms/batch 314.54 | loss  2.92 | perplexity    18.48
+-----------------------------------------------------------------------------------------
+| end of epoch   2 | time: 276.48s | valid loss  4.96 | valid perplexity   142.40
+-----------------------------------------------------------------------------------------
+=========================================================================================
+| End of training | test loss  4.92 | test perplexity   136.82
+=========================================================================================
+```
 ------------------------------------------------------------------------------------------------------------------------------
 The following context is about the RNN model here rather than the NCE loss.
 
