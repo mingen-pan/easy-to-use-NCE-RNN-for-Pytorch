@@ -212,7 +212,7 @@ try:
                 'valid perplexity {:8.2f}'.format(epoch, (time.time() - epoch_start_time),
                                            val_loss, math.exp(val_loss)))
         print('-' * 89)
-        lr = args.lr*epoch**(-0.5)
+        lr = args.lr * gamma ** epoch
         # decay += 1e-2
         # Save the model if the validation loss is the best we've seen so far.
         if not best_val_loss or val_loss < best_val_loss:
