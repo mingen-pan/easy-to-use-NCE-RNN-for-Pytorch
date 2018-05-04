@@ -37,6 +37,44 @@ The second hyperparameter Z is original the denominator of the softmax. Some pap
 
 Here the best initial Z in this model is found out to be 9.5.
 
+<br/>
+<br/>
+
+Time Saving:
+
+Given a LSTM RNN model with with one layer of 200 hidden units and the batch size of 35*32, using the Penn Tree Bank database(10000 words), the average time of the forward propagation from the Softmax and the back propagation from Softmax to each parameters is followed:
+
+```
+t_s = time.time()
+loss = train_criterion(output.view(-1, ntokens), targets)
+loss.backward()  
+softmax_time += time.time() - t_s
+ ```
+  
+The result is:
+ 
+```
+0.1559 seconds for NCE method
+0.3797 seconds for ordinary Softmax method
+```
+
+Therefore, each NCE can save 0.22 seconds each time, more than 50% of the total back propagation time.
+
+<br/>
+<br/>
+
+Performance:
+
+NCE:
+
+`| end of epoch   1 | time: 220.15s | valid loss  5.24 | valid perplexity   188.26`
+
+Ordinary Softmax:
+
+`| end of epoch   1 | time: 406.43s | valid loss  5.15 | valid perplexity   172.76`
+
+They are more or less similar. Of course, the ordinary softmax should behave a bit better.
+
 ------------------------------------------------------------------------------------------------------------------------------
 The following context is about the RNN model here rather than the NCE loss.
 
