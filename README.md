@@ -45,10 +45,17 @@ Time Saving:
 Given a LSTM RNN model with with one layer of 200 hidden units and the batch size of 35*32, using the Penn Tree Bank database(10000 words), the average time of the forward propagation from the Softmax and the back propagation from Softmax to each parameters is followed:
 
 ```
-t_s = time.time()
-loss = train_criterion(output.view(-1, ntokens), targets)
-loss.backward()  
-softmax_time += time.time() - t_s
+softmax_time = 0
+count = 0
+for i in range(N):
+    ### some training
+    t_s = time.time()
+    loss = train_criterion(output.view(-1, ntokens), targets)
+    loss.backward()  
+    softmax_time += time.time() - t_s
+    count += 1
+print(softmax_time/count)
+
  ```
   
 The result is:
